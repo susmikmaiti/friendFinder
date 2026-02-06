@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-100 min-h-screen flex justify-center items-center p-6">
+
+    <div class="bg-white max-w-4xl w-full rounded-xl shadow-lg p-8">
+        <h1 class="text-2xl font-semibold text-slate-700 mb-6">
+            {{ match.Name }} — Profile Overview
+        </h1>
+
+        <table class="w-full border border-slate-200 rounded-lg overflow-hidden">
+            <tbody class="divide-y divide-slate-200">
+                {% for label, value in {
+                    "Age": match.age,
+                    "Status": match.status,
+                    "Sex": match.sex,
+                    "Orientation": match.orientation,
+                    "Body Type": match.body_type,
+                    "Diet": match.diet,
+                    "Drinks": match.drinks,
+                    "Drugs": match.drugs,
+                    "Education": match.education,
+                    "Ethnicity": match.ethnicity,
+                    "Height": match.height ~ " inches",
+                    "Income": match.income,
+                    "Job": match.job,
+                    "Last Online": match.last_online,
+                    "Location": match.location,
+                    "Offspring": match.offspring,
+                    "Pets": match.pets,
+                    "Religion": match.religion,
+                    "Sign": match.sign,
+                    "Smokes": match.smokes,
+                    "Speaks": match.speaks
+                }.items() %}
+                <tr>
+                    <td class="w-1/4 bg-slate-50 px-4 py-2 font-medium text-slate-600">
+                        {{ label }}
+                    </td>
+                    <td class="px-4 py-2 text-slate-700">
+                        {{ value }}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <div class="mt-6">
+            <h2 class="text-lg font-semibold text-slate-700 mb-2">Bio</h2>
+            <div class="max-h-48 overflow-y-auto border rounded-md p-4 text-slate-700 bg-slate-50">
+                {{ match.essay0 }}
+            </div>
+        </div>
+
+        <a href="{{ url_for('show_matches') }}"
+           class="inline-block mt-6 text-slate-600 hover:underline">
+            ← Back to Matches
+        </a>
+    </div>
+
+</body>
+</html>

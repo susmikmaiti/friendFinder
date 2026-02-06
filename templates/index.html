@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Your Match</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-100 min-h-screen flex items-center justify-center">
+
+    <div class="bg-white w-full max-w-2xl rounded-xl shadow-lg p-8">
+        <h1 class="text-2xl font-semibold text-slate-700 mb-6 text-center">
+            Match Preference Form
+        </h1>
+
+        <form action="/" method="POST" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            
+            <div>
+                <label class="block text-sm font-medium text-slate-600">Age</label>
+                <input type="number" name="age" required
+                    class="mt-1 w-full rounded-md border p-2 focus:ring-2 focus:ring-slate-400">
+            </div>
+
+            <div>
+                <label class="block text-sm font-medium text-slate-600">Height (inches)</label>
+                <input type="number" name="height" required
+                    class="mt-1 w-full rounded-md border p-2 focus:ring-2 focus:ring-slate-400">
+            </div>
+
+            <div>
+                <label class="block text-sm font-medium text-slate-600">Status</label>
+                <select name="status" class="mt-1 w-full rounded-md border p-2">
+                    <option value="0">Single</option>
+                    <option value="1">Available</option>
+                    <option value="2">Seeing Someone</option>
+                    <option value="3">Married</option>
+                    <option value="4">Unknown</option>
+                </select>
+            </div>
+
+            <div>
+                <label class="block text-sm font-medium text-slate-600">Sex</label>
+                <select name="sex" class="mt-1 w-full rounded-md border p-2">
+                    <option value="0">Male</option>
+                    <option value="1">Female</option>
+                </select>
+            </div>
+
+            <div>
+                <label class="block text-sm font-medium text-slate-600">Orientation</label>
+                <select name="orientation" class="mt-1 w-full rounded-md border p-2">
+                    <option value="0">Straight</option>
+                    <option value="1">Bisexual</option>
+                    <option value="2">Gay</option>
+                </select>
+            </div>
+
+            <div>
+                <label class="block text-sm font-medium text-slate-600">Drinks</label>
+                <select name="drinks" class="mt-1 w-full rounded-md border p-2">
+                    <option value="0">Not at all</option>
+                    <option value="1">Rarely</option>
+                    <option value="2">Socially</option>
+                    <option value="3">Often</option>
+                    <option value="4">Very often</option>
+                    <option value="5">Desperately</option>
+                </select>
+            </div>
+
+            <div>
+                <label class="block text-sm font-medium text-slate-600">Drugs</label>
+                <select name="drugs" class="mt-1 w-full rounded-md border p-2">
+                    <option value="0">Never</option>
+                    <option value="1">Sometimes</option>
+                    <option value="2">Often</option>
+                </select>
+            </div>
+
+            <div>
+                <label class="block text-sm font-medium text-slate-600">Smokes</label>
+                <select name="smokes" class="mt-1 w-full rounded-md border p-2">
+                    <option value="0">No</option>
+                    <option value="1">Sometimes</option>
+                    <option value="2">When drinking</option>
+                    <option value="3">Yes</option>
+                    <option value="4">Trying to quit</option>
+                </select>
+            </div>
+
+            <div class="md:col-span-2 mt-4">
+                <button type="submit"
+                    class="w-full bg-slate-700 text-white py-2 rounded-md font-medium hover:bg-slate-800 transition">
+                    Find Matches
+                </button>
+            </div>
+
+        </form>
+    </div>
+
+</body>
+</html>
