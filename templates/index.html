@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Your Match</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-br from-pink-100 to-rose-200 flex justify-center items-center min-h-screen py-10">
+    <div class="bg-white p-8 rounded-2xl shadow-xl max-w-md w-full">
+        <div class="text-center mb-6">
+            <h1 class="text-3xl font-bold text-pink-600">Find Your Match ❤️</h1>
+            <p class="text-gray-500 text-sm mt-1">Fill in your details and we'll find your best matches</p>
+        </div>
+
+        {% if error %}
+        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-lg mb-4 text-sm">
+            {{ error }}
+        </div>
+        {% endif %}
+
+        <form action="/" method="POST" class="space-y-4">
+
+            <!-- Age -->
+            <div>
+                <label for="age" class="block text-sm font-semibold text-gray-700 mb-1">Age</label>
+                <input type="number" id="age" name="age" min="18" max="99" required
+                    class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400"
+                    placeholder="e.g. 27">
+            </div>
+
+            <!-- Status -->
+            <div>
+                <label for="status" class="block text-sm font-semibold text-gray-700 mb-1">Relationship Status</label>
+                <select id="status" name="status"
+                    class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400">
+                    <option value="0">Single</option>
+                    <option value="1">Available</option>
+                    <option value="2">Seeing Someone</option>
+                    <option value="3">Married</option>
+                    <option value="4">Unknown</option>
+                </select>
+            </div>
+
+            <!-- Sex -->
+            <div>
+                <label for="sex" class="block text-sm font-semibold text-gray-700 mb-1">Sex</label>
+                <select id="sex" name="sex"
+                    class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400">
+                    <option value="0">Male</option>
+                    <option value="1">Female</option>
+                </select>
+            </div>
+
+            <!-- Orientation -->
+            <div>
+                <label for="orientation" class="block text-sm font-semibold text-gray-700 mb-1">Sexual Orientation</label>
+                <select id="orientation" name="orientation"
+                    class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400">
+                    <option value="0">Straight</option>
+                    <option value="1">Bisexual</option>
+                    <option value="2">Gay</option>
+                </select>
+            </div>
+
+            <!-- Drinks -->
+            <div>
+                <label for="drinks" class="block text-sm font-semibold text-gray-700 mb-1">Drinking Habits</label>
+                <select id="drinks" name="drinks"
+                    class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400">
+                    <option value="0">Not at all</option>
+                    <option value="1">Rarely</option>
+                    <option value="2">Socially</option>
+                    <option value="3">Often</option>
+                    <option value="4">Very often</option>
+                    <option value="5">Desperately</option>
+                </select>
+            </div>
+
+            <!-- Drugs -->
+            <div>
+                <label for="drugs" class="block text-sm font-semibold text-gray-700 mb-1">Drug Use</label>
+                <select id="drugs" name="drugs"
+                    class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400">
+                    <option value="0">Never</option>
+                    <option value="1">Sometimes</option>
+                    <option value="2">Often</option>
+                </select>
+            </div>
+
+            <!-- Height -->
+            <div>
+                <label for="height" class="block text-sm font-semibold text-gray-700 mb-1">Height (inches)</label>
+                <input type="number" id="height" name="height" min="54" max="84" required
+                    class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400"
+                    placeholder="e.g. 68">
+            </div>
+
+            <!-- Smokes -->
+            <div>
+                <label for="smokes" class="block text-sm font-semibold text-gray-700 mb-1">Smoking Habits</label>
+                <select id="smokes" name="smokes"
+                    class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400">
+                    <option value="0">No</option>
+                    <option value="1">Sometimes</option>
+                    <option value="2">When drinking</option>
+                    <option value="3">Yes</option>
+                    <option value="4">Trying to quit</option>
+                </select>
+            </div>
+
+            <button type="submit"
+                class="bg-pink-500 text-white w-full py-3 rounded-lg text-lg font-bold hover:bg-pink-600 active:scale-95 transition-all duration-150 mt-2">
+                Find Matches 💕
+            </button>
+        </form>
+    </div>
+</body>
+</html>

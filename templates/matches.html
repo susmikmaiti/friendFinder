@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Matches</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-br from-pink-100 to-rose-200 min-h-screen py-10 px-4">
+    <div class="max-w-3xl mx-auto">
+
+        <div class="text-center mb-8">
+            <h1 class="text-3xl font-bold text-pink-600">Your Matches ❤️</h1>
+            {% if count %}
+            <p class="text-gray-600 mt-1">Found <span class="font-semibold text-pink-500">{{ count }}</span> compatible profiles for you</p>
+            {% endif %}
+        </div>
+
+        {% if message %}
+        <div class="bg-white rounded-2xl shadow p-8 text-center">
+            <p class="text-gray-500 text-lg mb-4">{{ message }}</p>
+            <a href="{{ url_for('index') }}"
+               class="inline-block bg-pink-500 text-white px-6 py-2 rounded-lg hover:bg-pink-600 transition font-semibold">
+                ← Back to Search
+            </a>
+        </div>
+
+        {% elif matches %}
+        <div class="space-y-4">
+            {% for match in matches %}
+            <div class="bg-white rounded-2xl shadow-md p-5 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4">
+
+                <!-- Profile info -->
+                <div class="flex-1">
+                    <div class="flex items-center gap-2 mb-2">
+                        <h2 class="text-xl font-bold text-pink-600">{{ match.Name }}</h2>
+                        <span class="text-xs bg-pink-100 text-pink-600 px-2 py-0.5 rounded-full font-medium">
+                            Score: {{ match.distance_score }}
+                        </span>
+                    </div>
+                    <div class="grid grid-cols-2 gap-x-6 gap-y-1 text-sm text-gray-700">
+                        <p><span class="font-semibold">Age:</span> {{ match.age }}</p>
+                        <p><span class="font-semibold">Sex:</span> {{ match.sex }}</p>
+                        <p><span class="font-semibold">Status:</span> {{ match.status }}</p>
+                        <p><span class="font-semibold">Orientation:</span> {{ match.orientation }}</p>
+                        <p><span class="font-semibold">Height:</span> {{ match.height }}"</p>
+                        <p><span class="font-semibold">Drinks:</span> {{ match.drinks }}</p>
+                        <p><span class="font-semibold">Drugs:</span> {{ match.drugs }}</p>
+                        <p><span class="font-semibold">Smokes:</span> {{ match.smokes }}</p>
+                    </div>
+                </div>
+
+                <!-- Action buttons -->
+                <div class="flex sm:flex-col gap-2 shrink-0">
+                    <a href="{{ url_for('profile', csv_index=match.csv_index) }}"
+                       class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition text-sm font-semibold text-center">
+                        View Profile
+                    </a>
+                    <button class="bg-pink-500 text-white px-4 py-2 rounded-lg hover:bg-pink-600 transition text-sm font-semibold">
+                        Like 💕
+                    </button>
+                    <button class="bg-gray-200 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-300 transition text-sm font-semibold">
+                        Skip
+                    </button>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="text-center mt-8">
+            <a href="{{ url_for('index') }}"
+               class="inline-block bg-white border border-pink-400 text-pink-500 px-6 py-2 rounded-lg hover:bg-pink-50 transition font-semibold">
+                ← New Search
+            </a>
+        </div>
+
+        {% else %}
+        <div class="bg-white rounded-2xl shadow p-8 text-center">
+            <p class="text-gray-500 text-lg mb-4">No matches found for your profile. Try adjusting your preferences.</p>
+            <a href="{{ url_for('index') }}"
+               class="inline-block bg-pink-500 text-white px-6 py-2 rounded-lg hover:bg-pink-600 transition font-semibold">
+                ← Back to Search
+            </a>
+        </div>
+        {% endif %}
+
+    </div>
+</body>
+</html>

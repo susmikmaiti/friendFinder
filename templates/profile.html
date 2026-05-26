@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ match.Name }}'s Profile</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-br from-pink-100 to-rose-200 min-h-screen py-10 px-4">
+    <div class="max-w-2xl mx-auto bg-white rounded-2xl shadow-xl p-8">
+
+        <div class="mb-6">
+            <h1 class="text-3xl font-bold text-pink-600">{{ match.Name }}'s Profile</h1>
+            <p class="text-gray-400 text-sm mt-1">Full profile details</p>
+        </div>
+
+        <!-- Core matching fields -->
+        <div class="mb-6">
+            <h2 class="text-sm font-bold uppercase tracking-wider text-gray-400 mb-3">Basics</h2>
+            <div class="grid grid-cols-2 gap-x-8 gap-y-2 text-sm text-gray-700">
+                <p><span class="font-semibold">Age:</span> {{ match.age }}</p>
+                <p><span class="font-semibold">Sex:</span> {{ match.sex }}</p>
+                <p><span class="font-semibold">Status:</span> {{ match.status }}</p>
+                <p><span class="font-semibold">Orientation:</span> {{ match.orientation }}</p>
+                <p><span class="font-semibold">Height:</span> {{ match.height }} inches</p>
+                <p><span class="font-semibold">Body Type:</span> {{ match.body_type or '—' }}</p>
+            </div>
+        </div>
+
+        <!-- Lifestyle -->
+        <div class="mb-6">
+            <h2 class="text-sm font-bold uppercase tracking-wider text-gray-400 mb-3">Lifestyle</h2>
+            <div class="grid grid-cols-2 gap-x-8 gap-y-2 text-sm text-gray-700">
+                <p><span class="font-semibold">Drinks:</span> {{ match.drinks or '—' }}</p>
+                <p><span class="font-semibold">Drugs:</span> {{ match.drugs or '—' }}</p>
+                <p><span class="font-semibold">Smokes:</span> {{ match.smokes or '—' }}</p>
+                <p><span class="font-semibold">Diet:</span> {{ match.diet or '—' }}</p>
+                <p><span class="font-semibold">Pets:</span> {{ match.pets or '—' }}</p>
+                <p><span class="font-semibold">Offspring:</span> {{ match.offspring or '—' }}</p>
+            </div>
+        </div>
+
+        <!-- Background -->
+        <div class="mb-6">
+            <h2 class="text-sm font-bold uppercase tracking-wider text-gray-400 mb-3">Background</h2>
+            <div class="grid grid-cols-2 gap-x-8 gap-y-2 text-sm text-gray-700">
+                <p><span class="font-semibold">Education:</span> {{ match.education or '—' }}</p>
+                <p><span class="font-semibold">Job:</span> {{ match.job or '—' }}</p>
+                <p><span class="font-semibold">Ethnicity:</span> {{ match.ethnicity or '—' }}</p>
+                <p><span class="font-semibold">Religion:</span> {{ match.religion or '—' }}</p>
+                <p><span class="font-semibold">Sign:</span> {{ match.sign or '—' }}</p>
+                <p><span class="font-semibold">Income:</span>
+                    {% if match.income and match.income != -1 %}
+                        ${{ "{:,}".format(match.income | int) }}
+                    {% else %}—{% endif %}
+                </p>
+            </div>
+        </div>
+
+        <!-- Meta -->
+        <div class="mb-6">
+            <h2 class="text-sm font-bold uppercase tracking-wider text-gray-400 mb-3">Other</h2>
+            <div class="grid grid-cols-2 gap-x-8 gap-y-2 text-sm text-gray-700">
+                <p><span class="font-semibold">Location:</span> {{ match.location or '—' }}</p>
+                <p><span class="font-semibold">Last Online:</span> {{ match.last_online or '—' }}</p>
+                <p><span class="font-semibold">Speaks:</span> {{ match.speaks or '—' }}</p>
+            </div>
+        </div>
+
+        <!-- Bio -->
+        {% if match.essay0 %}
+        <div class="mb-6">
+            <h2 class="text-sm font-bold uppercase tracking-wider text-gray-400 mb-3">Bio</h2>
+            <p class="text-gray-700 text-sm leading-relaxed bg-pink-50 rounded-lg p-4">{{ match.essay0 }}</p>
+        </div>
+        {% endif %}
+
+        <a href="{{ url_for('show_matches') }}"
+           class="inline-block mt-2 bg-pink-500 text-white px-6 py-2 rounded-lg hover:bg-pink-600 transition font-semibold text-sm">
+            ← Back to Matches
+        </a>
+    </div>
+</body>
+</html>
